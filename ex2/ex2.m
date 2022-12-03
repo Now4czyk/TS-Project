@@ -42,3 +42,6 @@ rankObsv = rank(observability);
 % zmiennych stanu jest równa 3
 
 %% Sprawdzenie jakie wartości wymuszeń spowodują przyciągnięcie kuli. Zbadanie odpowiedzi skokowej w układzie otwartym.
+ob = ss(A, B, C, D);
+step(ob)
+
