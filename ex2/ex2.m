@@ -1,3 +1,6 @@
+close all
+clear
+
 %% Parametry
 m = .00575;
 g = 9.81;
@@ -9,7 +12,7 @@ ki = 2.5165;
 ci = .0243;
 d = .0792;
 bd = .06;
-xd = .015;
+xd = d-bd;
 x10 = .008;
 x20 = 0;
 x30 = .75;
@@ -24,6 +27,7 @@ b31 = ki*f2/f1*exp(x10/f2);
 A = [0 1 0; a21 0 a23; a31 0 a33];
 B = [0 0; 0 g; b31 0];
 C = [1 0 0];
+D = 0;
 
 eigenValues = eig(A)
 % Wektor wartości własnych to:
@@ -44,4 +48,7 @@ rankObsv = rank(observability);
 %% Sprawdzenie jakie wartości wymuszeń spowodują przyciągnięcie kuli. Zbadanie odpowiedzi skokowej w układzie otwartym.
 ob = ss(A, B, C, D);
 step(ob)
+sys = tf(ob)
+figure;
+step(sys)
 
