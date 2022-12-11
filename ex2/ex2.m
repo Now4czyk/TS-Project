@@ -48,7 +48,7 @@ rankObsv = rank(observability);
 %% Sprawdzenie jakie wartości wymuszeń spowodują przyciągnięcie kuli. Zbadanie odpowiedzi skokowej w układzie otwartym.
 ob = ss(A, B, C, D);
 step(ob)
-sys = tf(ob)
+sys1 = tf(ob)
 figure;
-step(sys)
+step(sys1)
 
