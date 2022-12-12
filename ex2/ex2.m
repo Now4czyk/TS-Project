@@ -32,8 +32,8 @@ D = 0;
 eigenValues = eig(A)
 % Wektor wartości własnych to:
 % [6.10364663296979;-6.10364662992174;-186.289135085222]
-% Na podstawie kryterium stabilności Routh'a stwierdzamy, że układ jest
-% niestabilny, ponieważ następuje zmiana znaku 6,1036... -> -6,1036...
+% układ jest niestabilny, ponieważ następuje zmiana znaku
+% 6,1036... -> -6,1036...
 
 controlability = ctrb(A, B);
 rankCtrb = rank(controlability);
