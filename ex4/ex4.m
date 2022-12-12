@@ -18,7 +18,6 @@ x20 = 0;
 x30 = .75;
 u10 = 0.2883767137;
 
-%% Sprawdzenie stabilności, sterowalności i obserwowalności
 a21 = 1/(2*m)*x30^2*FemP1/FemP2*exp(-x10/FemP2); 
 a23 = -1/(m)*x30*FemP1/FemP2*exp(-x10/FemP2); 
 a31 = 1/f1*exp(x10/f2)*(ki*u10+ci-x30); 
@@ -31,16 +30,16 @@ D = 0;
 
 %% Sprawdzenie jakie wartości wymuszeń spowodują przyciągnięcie kuli. Zbadanie odpowiedzi skokowej w układzie otwartym.
 ob = ss(A, B, C, D);
-step(ob)
+sys1 = tf(ob)
+% figure; step(sys1(2))
 
 %% Wzmocnienia sprzężenia od stanu
 
 s = [2 5 7];
 k = -place(A, B, -s);
-
 A2=A+B*k
-
-eig(A2)
+% eig(A2)
+% step(ss(A2, B, C, D));
 
 %% Sprzężenie od stanu
 
@@ -49,7 +48,7 @@ t = 0:0.01:120;     % wektor czasu
 [t, x] = ode45(@odefun, t, x0, [], A, B, k);
 
 % Rysowanie wykresow
-figure; plot(t, x(:,2));
+% figure; plot(t, x(:,2));
 xlabel('t [sek]'); ylabel('y(t) [cm]');
 
 function dxdt = odefun(t, x, A, B, k)

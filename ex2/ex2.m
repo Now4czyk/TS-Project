@@ -50,5 +50,6 @@ ob = ss(A, B, C, D);
 step(ob)
 sys1 = tf(ob)
 figure;
-step(sys1)
+step(sys1(1))
+step(sys1(2))
 
