@@ -19,7 +19,7 @@ x30 = .75;
 u10 = 0.2883767137;
 
 %% Sprawdzenie stabilności, sterowalności i obserwowalności
-a21 = 1/(2*m)*x30^2*FemP1/FemP2*exp(-x10/FemP2); 
+a21 = 1/(2*m)*x30^2*FemP1/FemP2^2*exp(-x10/FemP2); 
 a23 = -1/(m)*x30*FemP1/FemP2*exp(-x10/FemP2); 
 a31 = 1/f1*exp(x10/f2)*(ki*u10+ci-x30); 
 a33 = -f2/f1*exp(x10/f2);
