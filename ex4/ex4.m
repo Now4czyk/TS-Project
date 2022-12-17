@@ -34,12 +34,12 @@ sys1 = tf(ob)
 % figure; step(sys1(2))
 
 %% Wzmocnienia sprzężenia od stanu
-
-s = [2 5 7];
+% dla s = [2 7 80] odpowiedź ustala się na wartości
+s = [2 7 80];
 k = -place(A, B, -s);
 A2=A+B*k
 % eig(A2)
-% step(ss(A2, B, C, D));
+figure; step(ss(A2, B, C, D));
 
 %% Sprzężenie od stanu
 
@@ -48,7 +48,7 @@ t = 0:0.01:120;     % wektor czasu
 [t, x] = ode45(@odefun, t, x0, [], A, B, k);
 
 % Rysowanie wykresow
-% figure; plot(t, x(:,2));
+figure; plot(t, x(:,1));
 xlabel('t [sek]'); ylabel('y(t) [cm]');
 
 function dxdt = odefun(t, x, A, B, k)
