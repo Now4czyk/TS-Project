@@ -43,6 +43,9 @@ figure; step(ss(A2, B, C, D));
 
 %% Sprzężenie od stanu
 
+%pochodne porównać do zera
+%na u0+k wzorekr z kartkowki  kx-x=x0
+
 x0 = [0; 0; 0]     % warunki poczatkowe
 t = 0:0.01:120;     % wektor czasu
 [t, x] = ode45(@odefun, t, x0, [], A, B, k);
@@ -52,7 +55,7 @@ figure; plot(t, x(:,1));
 xlabel('t [sek]'); ylabel('y(t) [cm]');
 
 function dxdt = odefun(t, x, A, B, k)
-    u = 1 +k*x;
+    u = k*x;
     dxdt = A * x + B * u;
 end
 
