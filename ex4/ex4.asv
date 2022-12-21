@@ -42,18 +42,20 @@ A2=A+B*k
 figure; step(ss(A2, B, C, D));
 
 %% liczenie stałowartościowej
+% s od symbol
+syms x1s x2s x3s
 
-u0 = 0.006;
+format bank
+
+u = 0.006;
 
 % to na kartce, bo od razu wychodzi, nawet nie trzeba liczyć, pogczamp
 % super aleluja
 x2 = 0
-
-% liczyłem to po północy, mogą być błędy
-x3 = (g*a31-b31*a21)/(a33*a21-a23*a23)*u0
+x3 = (g*a31-b31*a21)/(a33*a21-a23*a23)
 x1 = -(a23*x3+g)/a21
 
-xr = [x1, x2, x3]'
+xr = [x1, x2, x3]
 
 %% Sprzężenie od stanu
 
@@ -61,15 +63,15 @@ xr = [x1, x2, x3]'
 %na u0+k wzorekr z kartkowki  kx-x=x0
 
 x0 = [x10, x20, x30]   % warunki poczatkowe
-t = 0:0.01:30;     % wektor czasu
-[t, x] = ode45(@odefun, t, x0, [], A, B, k, xr, u0);
+t = 0:0.01:120;     % wektor czasu
+[t, x] = ode45(@odefun, t, x0, [], A, B, k, xr);
 
 % Rysowanie wykresow
 figure; plot(t, x(:,1));
 xlabel('t [sek]'); ylabel('y(t) [cm]');
 
-function dxdt = odefun(t, x, A, B, k, xr, u0)
-    u = u0 + k*(x-xr);
+function dxdt = odefun(t, x, A, B, k, xr)
+    u = 0.006 + k*(x-xr);
     dxdt = A * x + B * u;
 end
 
