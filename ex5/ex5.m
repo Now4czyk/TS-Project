@@ -28,5 +28,10 @@ B = [0 0; 0 g; b31 0];
 C = [1 0 0];
 D = 0;
 
-%% TODO dobrać wartości wzmocnień obserwatora oraz wzmocnień od stanu
+%% Dobieranie wartości wzmocnień obserwatora oraz wzmocnień od stanu
+sLo = [1, 2, 3]
+Lo = place(A', C', -sLo)
+
+sKx = [1, 3, 5]
+Kx = place(A, B, -sKx)
 
