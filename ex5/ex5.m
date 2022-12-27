@@ -29,9 +29,14 @@ C = [1 0 0];
 D = 0;
 
 %% Dobieranie wartości wzmocnień obserwatora oraz wzmocnień od stanu
-sLo = [1, 2, 3]
+sLo = [800, 900, 850]
 Lo = place(A', C', -sLo)
 
-sKx = [1, 3, 5]
-Kx = place(A, B, -sKx)
+% sKx = [770, 720, 630]';
+sKx = [1, 2, 3];
+Kx = place(A, B(:, 1), -sKx);
 
+u0 = .006;
+x1 = .01;
+x2 = 0;
+x3 = -(a21*x1+g)/a23
