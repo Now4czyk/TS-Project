@@ -8,14 +8,14 @@ FemP2 = .0058231;
 f1 = .00014142;
 f2 = .0045626;
 ki = 2.5165;
-ci = .0243;
+ci = .0243 * sign(4-2);
 d = .0792;
 bd = .06;
 xd = d-bd;
 x10 = .008;
 x20 = 0;
 x30 = .75;
-u10 = 0.2883767137;
+u10 = 1/ki*(x30-ci);
 
 %% Sprawdzenie stabilności, sterowalności i obserwowalności
 a21 = 1/(2*m)*x30^2*FemP1/FemP2^2*exp(-x10/FemP2); 
