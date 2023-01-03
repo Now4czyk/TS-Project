@@ -36,7 +36,7 @@ k = -place(A, B(:,1), -s)
 %% liczenie stałowartościowej
 %regulacja stałowartościowa to przyrównanie wszystkich pochodnych do zera
 %czego wynik widzimy poniżej
-x1 = .01;
+x1 = .008;
 x2 = 0;
 x3 = -(a21*x1+g)/a23
 u0 = -(a31*x1+a33*x3)/b31;
