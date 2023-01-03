@@ -30,7 +30,7 @@ D = 0;
 %% Wzmocnienia sprzężenia od stanu
 %Wybranie tylko pierwszej kolumny, ponieważ druga zawiera stałą
 %przyspieszenia ziemskiego. Stąd nie bierzemy tego pod uwagę w tym miejscu
-s = [20, 25, 30]';
+s = [49, 54, 59]';
 k = -place(A, B(:,1), -s)
 
 %% liczenie stałowartościowej
