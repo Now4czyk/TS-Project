@@ -75,5 +75,6 @@ gamma = C*P^(-1);
 delta = 0;
 
 [l, m] = ss2tf(alpha,beta(:, 1),gamma,delta)
+%w wideo o tym 35:05
 [l1, m1] = ss2tf(alpha,beta(:, 2),gamma,delta)
 
