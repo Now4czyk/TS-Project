@@ -1,5 +1,5 @@
-close all
-clear
+close all; clear; clc;
+
 %% Parametry
 m = .00575;
 g = 9.81;
