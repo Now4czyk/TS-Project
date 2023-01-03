@@ -1,5 +1,4 @@
-close all
-clear
+close all; clear; clc;
 
 %% Parametry
 m = .00575;
@@ -29,10 +28,14 @@ C = [1 0 0];
 D = 0;
 
 %% Wzmocnienia sprzężenia od stanu
+%Wybranie tylko pierwszej kolumny, ponieważ druga zawiera stałą
+%przyspieszenia ziemskiego. Stąd nie bierzemy tego pod uwagę w tym miejscu
 s = [600, 620, 630]';
 k = -place(A, B(:,1), -s)
 
 %% liczenie stałowartościowej
+%regulacja stałowartościowa to przyrównanie wszystkich pochodnych do zera
+%czego wynik widzimy poniżej
 x1 = .01;
 x2 = 0;
 x3 = -(a21*x1+g)/a23
