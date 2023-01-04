@@ -1,5 +1,4 @@
-close all
-clear
+close all; clear; clc;
 
 %% Parametry
 m = .00575;
@@ -35,3 +34,6 @@ Bd = B*Tp;
 Cd = C;
 Dd = D;
 
+%% Sprzężenie od stanu
+sKx = 60*ones(1, 3)
+Kx = -acker(A, B(:,1), -sKx)
