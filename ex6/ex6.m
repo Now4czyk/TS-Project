@@ -35,5 +35,10 @@ Cd = C;
 Dd = D;
 
 %% Sprzężenie od stanu
-sKx = 60*ones(1, 3)
+sKx = 200*ones(1, 3)
 Kx = -acker(A, B(:,1), -sKx)
+
+x1 = .01;
+x2 = 0;
+x3 = -(a21*x1+g)/a23
+u0 = -(a31*x1+a33*x3)/b31;
