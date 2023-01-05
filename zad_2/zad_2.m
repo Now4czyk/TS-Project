@@ -28,9 +28,7 @@ B = [0 0; 0 g; b31 0];
 C = [1 0 0];
 D = 0;
 
-eigenValues = eig(A)
-% Wektor wartości własnych to:
-% [6.10364663296979;-6.10364662992174;-186.289135085222]
+eigenValues = eig(A);
 % układ jest niestabilny, ponieważ następuje zmiana znaku
 % 6,1036... -> -6,1036...
 
@@ -43,12 +41,3 @@ observability = obsv(A, C);
 rankObsv = rank(observability);
 % Układ jest obserwowalny, ponieważ rząd macierzy obserwowalności oraz x
 % zmiennych stanu jest równa 3
-
-%% Sprawdzenie jakie wartości wymuszeń spowodują przyciągnięcie kuli. Zbadanie odpowiedzi skokowej w układzie otwartym.
-ob = ss(A, B, C, D);
-step(ob)
-sys1 = tf(ob)
-figure;
-step(sys1(1))
-step(sys1(2))
-
