@@ -17,12 +17,22 @@ x20 = 0;
 x30 = .75;
 u10 = 1/ki*(x30-ci);
 
-%% Sprawdzenie stabilności, sterowalności i obserwowalności
+%% definicja parametrów
 a21 = 1/(2*m)*x30^2*FemP1/FemP2^2*exp(-x10/FemP2); 
 a23 = -1/(m)*x30*FemP1/FemP2*exp(-x10/FemP2); 
 a31 = 1/f1*exp(x10/f2)*(ki*u10+ci-x30); 
 a33 = -f2/f1*exp(x10/f2);
 b31 = ki*f2/f1*exp(x10/f2);
+
+%% wyświetlenie transmitancji
+
+A = [0 1 0; a21 0 a23; a31 0 a33];
+B = [0 0; 0 g; b31 0];
+C = [1 0 0];
+D = 0;
+
+ob = ss(A, B, C, D);
+tf(ob)
 
 %% Uruchomienie symulacji i stworzenie wykresów
 
@@ -36,4 +46,5 @@ referenceTime = out.reference.time;
 plot(posTime, pos, referenceTime, reference)
 legend("sygnał wyjściowy", "sygnał referencyjny")
 xlabel("t [s]")
-ylabel("position [cm]")
+ylabel("position [m]")
+title("Odpowiedź URA")
