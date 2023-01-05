@@ -1,8 +1,5 @@
-function x = kf(we)
+function x  = kf(we)
 %% Odczyt wejsc
-global P
-global P_post
-global x_post
 y = we(1);  % aktualny pomiar
 u = we(2);  % aktualne wymuszenie
 x1 = we(3:5);   % poprzedni wektor stanu
@@ -35,18 +32,14 @@ C = [1 0 0];
 D = 0;
 
 %% Dyskretyzacja modelu metodą Eulera w przód(na podstawie instrukcji lab5)
-Tp = 0.001;
+Tp = 0.0001;
 Ad = (eye(3)+A*Tp);
 Bd = B*Tp;
 Cd = C;
 Dd = D;
 
-
-P_post = I*1000;
-x_post = [xd; 0; 0];
-
 %% Nastawy filtru
-var_n = 0.001;% wariancja szumu pomiarowego
+var_n = 100;% wariancja szumu pomiarowego
 var_v = 50;% wariancje szumow wewnetrznych
 
 Q = diag(var_v);    % macierz kowariancji szumow wewnetrznych
@@ -55,18 +48,13 @@ R = diag(var_n);  	% macierz kowariancji szumow pomiarowych
 
 %% Algorytm filtru Kalmana
 % Etap predykcji
-x_d = Ad*x_post + Bd*u;
-P_d = Ad*P_post*Ad' + Q;
+x_d = Ad*x1 + Bd*[u; 1];
+P_d = Ad*eye(3)*1000*Ad' + Q;
 
 % Etap filtracji
 K = P_d*Cd' * (Cd*P_d*Cd' + R)^-1;
 x_hat = x_d + K*(y - Cd*x_d);
-P = (I - K*Cd)*P_d;
     
 % Przekazanie danych
-x_post = x_hat
-P_post = P;
-
 x = x_hat;
 end
-
