@@ -43,12 +43,11 @@ referenceTime = out.reference.time;
 control = out.control.signals.values;
 controlTime = out.control.time;
 
-plot(posTime, pos, referenceTime, reference);
+plot(posTime, pos);
 xlabel("t [s]");
 ylabel("position [m]");
-legend('Sygnał wyjściowy', 'Sygnał referencyjny')
-title("Sygnał wyjściowy (reg. stałowartosciowa)");
+title("Sygnał wyjściowy (reg. stałowartościowa)");
 figure;
 plot(controlTime, control);
 xlabel("t [s]");
-title("Sygnał sterujący (reg. stałowartosciowa)");
+title("Sygnał sterujący (syg. stałowartościowa)");
