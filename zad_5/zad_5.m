@@ -16,7 +16,6 @@ x10 = .008;
 x20 = 0;
 x30 = .75;
 u10 = 1/ki*(x30-ci);
-% 0.2883767137
 
 a21 = 1/(2*m)*x30^2*FemP1/FemP2^2*exp(-x10/FemP2); 
 a23 = -1/(m)*x30*FemP1/FemP2*exp(-x10/FemP2); 
@@ -29,14 +28,16 @@ C = [1 0 0];
 D = 0;
 
 %% Dobieranie wartości wzmocnień obserwatora oraz wzmocnień od stanu
-sLo = 200*ones(1,3)
-Lo = acker(A', C', -sLo)
+sLo = 200*ones(1,3);
+Lo = acker(A', C', -sLo);
 
-% sKx = [770, 720, 630]';
-sKx = 60*ones(1, 3)
-Kx = -acker(A, B(:,1), -sKx)
+%% Nowa macierz stanu
+A0 = A - Lo'*C;
 
+%% Do regulacji stałowartościowej 
+sKx = 60*ones(1, 3);
+Kx = -acker(A, B(:,1), -sKx);
 x1 = .003;
 x2 = 0;
-x3 = -(a21*x1+g)/a23
+x3 = -(a21*x1+g)/a23;
 u0 = -(a31*x1+a33*x3)/b31;
