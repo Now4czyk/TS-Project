@@ -29,33 +29,30 @@ C = [1 0 0];
 D = 0;
 
 %% Postać kanoniczna sterowalna
-% TODO dodać g
 polyA = -poly(A);
 A2 = [0 1 0; 0 0 1; polyA(4) polyA(3) polyA(2)];
 B2 = [0; 0; 1];
 
-% Dla części macierzy B, działa 
+% Macierz podobieństwa
 S1 = ctrb(A,B(:, 1));
 S2 = ctrb(A2, B2);
 P=S2*S1^(-1);
 
-alpha = P*A*P^(-1);
+alpha = P*A*P^(-1)
 beta = P*B(:, 1);
-gamma = C*P^(-1);
-delta = D;
-
-[l, m] = ss2tf(alpha,beta,gamma,delta)
+beta(:, 2) = [0; 0; g];
+beta
+gamma = C*P^(-1)
+delta = D
 
 %% Postać diagonalna
 % TODO dodać g
-% [M, b] = jordan(A)
-% 
-% P = M^(-1)
-% 
-% alpha = P*A*P^(-1);
-% beta = P*B;
-% gamma = C*P^(-1);
-% delta = 0;
-% 
-% [l, m] = ss2tf(alpha,beta(:, 1),gamma,delta)
+[M, b] = jordan(A);
+
+P = M^(-1);
+
+alpha = P*A*P^(-1)
+beta = P*B
+gamma = C*P^(-1)
+delta = 0
 
