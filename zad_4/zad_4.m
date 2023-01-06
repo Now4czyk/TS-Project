@@ -6,7 +6,7 @@ g = 9.81;
 FemP1 = .017521;
 FemP2 = .0058231;
 f1 = .00014142;
-f2 = .0045626;
+f2 = .0045626;  
 ki = 2.5165;
 ci = .0243 * sign(4-2);
 d = .0792;
@@ -28,16 +28,20 @@ C = [1 0 0];
 D = 0;
 
 %% Wzmocnienia sprzężenia od stanu
-%Wybranie tylko pierwszej kolumny, ponieważ druga zawiera stałą
-%przyspieszenia ziemskiego. Stąd nie bierzemy tego pod uwagę w tym miejscu
+% Wybranie tylko pierwszej kolumny, ponieważ druga zawiera stałą
+% przyspieszenia ziemskiego. Stąd nie bierzemy tego pod uwagę akurat w tym 
+% miejscu
 s = [49, 54, 59]';
-k = -place(A, B(:,1), -s)
+k = -place(A, B(:,1), -s);
 
-%% liczenie stałowartościowej
-%regulacja stałowartościowa to przyrównanie wszystkich pochodnych do zera
-%czego wynik widzimy poniżej
+%% Wyznaczenie macierzy stanu dla układu zamkniętego
+A1 = A + B(:, 1)*k;
+
+%% Liczenie regulacji stałowartościowej
+% Regulacja stałowartościowa to przyrównanie wszystkich pochodnych 
+% zmiennych stanu do zera. Wynik powyższego działania widzimy poniżej
 x1 = .008;
 x2 = 0;
-x3 = -(a21*x1+g)/a23
+x3 = -(a21*x1+g)/a23;
 u0 = -(a31*x1+a33*x3)/b31;
 
