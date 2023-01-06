@@ -31,8 +31,8 @@ D = 0;
 % Wybranie tylko pierwszej kolumny, ponieważ druga zawiera stałą
 % przyspieszenia ziemskiego. Stąd nie bierzemy tego pod uwagę akurat w tym 
 % miejscu
-s = [49, 54, 59]';
-k = -place(A, B(:,1), -s);
+s = [60+600i, 60-600i, 60]';
+k = -acker(A, B(:,1), -s);
 
 %% Wyznaczenie macierzy stanu dla układu zamkniętego
 A1 = A + B(:, 1)*k;

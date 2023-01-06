@@ -35,7 +35,7 @@ ob = ss(A, B, C, D);
 tf(ob)
 
 %% Uruchomienie symulacji i stworzenie wykresów
-out = sim("zad_3_sch.slx", 40);
+out = sim("zad_3_sch.slx", .2);
 pos = out.position.signals.values;
 posTime = out.position.time;
 reference = out.reference.signals.values;
@@ -47,8 +47,8 @@ plot(posTime, pos, referenceTime, reference);
 xlabel("t [s]");
 ylabel("position [m]");
 legend('Sygnał wyjściowy', 'Sygnał referencyjny')
-title("Sygnał wyjściowy (reg. stałowartosciowa)");
+title("Sygnał wyjściowy (śledzenie sygnału sinusoidalnego)");
 figure;
 plot(controlTime, control);
 xlabel("t [s]");
-title("Sygnał sterujący (reg. stałowartosciowa)");
+title("Sygnał sterujący (śledzenie sygnału sinusoidalnego)");
