@@ -46,7 +46,6 @@ gamma = C*P^(-1)
 delta = D
 
 %% Postać diagonalna
-% TODO dodać g
 [M, b] = jordan(A);
 
 P = M^(-1);
