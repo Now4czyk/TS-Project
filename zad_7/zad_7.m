@@ -1,5 +1,4 @@
-close all
-clear
+close all; clear;
 
 %% Parametry
 m = .00575;
