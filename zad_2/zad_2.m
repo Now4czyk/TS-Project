@@ -28,9 +28,8 @@ B = [0 0; 0 g; b31 0];
 C = [1 0 0];
 D = 0;
 
-eigenValues = eig(A);
-% układ jest niestabilny, ponieważ następuje zmiana znaku
-% 6,1036... -> -6,1036...
+eigenValues = eig(A)
+% układ jest niestabilny, jedna wartość dodatnia
 
 controlability = ctrb(A, B);
 rankCtrb = rank(controlability);
