@@ -1,4 +1,7 @@
 # TS-Project
-Implementation of control system based on the state vector
-
-[DOCS](https://docs.google.com/document/d/1G8NF7ykavmZ2joFIe19nuVDHB_III9Gp5Es8WktwyKI/edit)
+Implementation of control system based on the state vector. 
+Project includes implementation of following aspects:
+- PID controller
+- State-coupled control
+- State observer
+- Kalman filter
